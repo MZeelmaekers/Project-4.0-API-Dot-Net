@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\School\\Project4\\Project40-API-Dot-NET\\Project40-API-Dot-NET.csproj": {}
+    "C:\\School\\Project4\\Project-4.0-API-Dot-Net\\Project40-API-Dot-NET.csproj": {}
   },
   "projects": {
-    "C:\\School\\Project4\\Project40-API-Dot-NET\\Project40-API-Dot-NET.csproj": {
+    "C:\\School\\Project4\\Project-4.0-API-Dot-Net\\Project40-API-Dot-NET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\School\\Project4\\Project40-API-Dot-NET\\Project40-API-Dot-NET.csproj",
+        "projectUniqueName": "C:\\School\\Project4\\Project-4.0-API-Dot-Net\\Project40-API-Dot-NET.csproj",
         "projectName": "Project40-API-Dot-NET",
-        "projectPath": "C:\\School\\Project4\\Project40-API-Dot-NET\\Project40-API-Dot-NET.csproj",
+        "projectPath": "C:\\School\\Project4\\Project-4.0-API-Dot-Net\\Project40-API-Dot-NET.csproj",
         "packagesPath": "C:\\Users\\niels\\.nuget\\packages\\",
-        "outputPath": "C:\\School\\Project4\\Project40-API-Dot-NET\\obj\\",
+        "outputPath": "C:\\School\\Project4\\Project-4.0-API-Dot-Net\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\niels\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,30 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
