@@ -18,6 +18,24 @@ namespace Project40_API_Dot_NET.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+           .HasMany<CameraBox>(p => p.CameraBoxes);
+
+            modelBuilder.Entity<User>()
+           .HasMany<Plant>(p => p.Plants);
+
+            modelBuilder.Entity<Result>()
+                .HasMany<Plant>(p => p.Plants);
+
+            modelBuilder.Entity<CameraBox>()
+                .HasOne(c => c.User);
+
+            modelBuilder.Entity<Plant>()
+                .HasOne(p => p.User);
+
+            modelBuilder.Entity<Plant>()
+                .HasOne(p => p.Result);
+
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<CameraBox>().ToTable("CameraBox");
             modelBuilder.Entity<Result>().ToTable("Result");

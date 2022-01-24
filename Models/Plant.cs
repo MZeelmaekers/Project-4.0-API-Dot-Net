@@ -14,7 +14,7 @@ namespace Project40_API_Dot_NET.Models
 
         public int UserId { get; set; }
         public User User { get; set; }
-        public int ResultId { get; set; }
+        public int? ResultId { get; set; }
         public Result Result { get; set; }
     }
 }

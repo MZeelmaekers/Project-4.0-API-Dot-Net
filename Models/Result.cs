@@ -11,6 +11,6 @@ namespace Project40_API_Dot_NET.Models
         public string Prediction { get; set; }
         public double Accuracy { get; set; }
 
-        public ICollection<Plant> Plant { get; set; }
+        public ICollection<Plant> Plants { get; set; }
     }
 }

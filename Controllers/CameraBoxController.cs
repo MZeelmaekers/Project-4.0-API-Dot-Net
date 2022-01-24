@@ -25,14 +25,19 @@ namespace Project40_API_Dot_NET.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CameraBox>>> GetCameraBoxes()
         {
-            return await _context.CameraBoxes.ToListAsync();
+            return await _context.CameraBoxes
+                .Include(c => c.User)
+                .ToListAsync();
         }
 
         // GET: api/CameraBox/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CameraBox>> GetCameraBox(int id)
         {
-            var cameraBox = await _context.CameraBoxes.FindAsync(id);
+            var cameraBox = await _context.CameraBoxes
+                .Include(c => c.User)
+                .Where(c => c.Id == id)
+                .FirstAsync();
 
             if (cameraBox == null)
             {
