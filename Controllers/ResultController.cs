@@ -25,14 +25,19 @@ namespace Project40_API_Dot_NET.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Result>>> GetResults()
         {
-            return await _context.Results.ToListAsync();
+            return await _context.Results
+                .Include(r => r.Plants)
+                .ToListAsync();
         }
 
         // GET: api/Result/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Result>> GetResult(int id)
         {
-            var result = await _context.Results.FindAsync(id);
+            var result = await _context.Results
+                .Include(r => r.Plants)
+                .Where(r => r.Id == id)
+                .FirstAsync();
 
             if (result == null)
             {

@@ -154,3 +154,6 @@ C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\runtimes\win-x64\nat
 C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\School\Project4\Project-4.0-API-Dot-Net\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

@@ -34,7 +34,7 @@ namespace Project40_API_Dot_NET
                 Configuration.GetConnectionString("DefaultConnection")
                 ));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project 4.0 API", Version = "v1" });
@@ -48,7 +48,7 @@ namespace Project40_API_Dot_NET
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project40_API_Dot_NET v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project 4.0 API v1"));
             }
 
             app.UseHttpsRedirection();

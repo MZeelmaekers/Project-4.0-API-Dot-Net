@@ -10,5 +10,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>Project40_API_Dot_NET.Data.PlantContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>Project40-API-Dot-NET20220124112651 - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
