@@ -3,6 +3,7 @@ using Project40_API_Dot_NET.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project40_API_Dot_NET.Data
@@ -40,6 +41,19 @@ namespace Project40_API_Dot_NET.Data
             modelBuilder.Entity<CameraBox>().ToTable("CameraBox");
             modelBuilder.Entity<Result>().ToTable("Result");
             modelBuilder.Entity<Plant>().ToTable("Plant");
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
+        {
+
+            var entries = ChangeTracker.Entries().Where(E => E.State == EntityState.Added).ToList();
+
+            foreach (var entityEntry in entries)
+            {
+                entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now;
+            }
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }

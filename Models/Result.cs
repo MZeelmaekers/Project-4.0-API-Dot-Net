@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Project40_API_Dot_NET.Models
 {
-    public class Result
+    public class Result: BaseEntity
     {
         public int Id { get; set; }
         public string Prediction { get; set; }

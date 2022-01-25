@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Project40_API_Dot_NET.Models
 {
-    public class Plant
+    public class Plant: BaseEntity
     {
         public int Id { get; set; }
         public string FotoPath { get; set; }
         public string? Location { get; set; }
-        
+
 
         public int UserId { get; set; }
         public User User { get; set; }
