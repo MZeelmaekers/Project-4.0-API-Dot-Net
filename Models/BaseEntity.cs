@@ -7,7 +7,7 @@ namespace Project40_API_Dot_NET.Models
 {
     public class BaseEntity
     {
-        public DateTime? CreatedAt {get;set;}
+        public DateTime CreatedAt {get;set;}
 
         public BaseEntity()
         {
