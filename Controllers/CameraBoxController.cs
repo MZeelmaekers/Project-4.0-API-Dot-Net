@@ -47,6 +47,23 @@ namespace Project40_API_Dot_NET.Controllers
             return cameraBox;
         }
 
+        // GET: api/CameraBox/User/5
+        [HttpGet("User/{userId}")]
+        public async Task<ActionResult<IEnumerable<CameraBox>>> GetCameraBoxFromUser(int userId)
+        {
+            var cameraBoxes = await _context.CameraBoxes
+                .Include(c => c.User)
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
+
+            if (cameraBoxes == null)
+            {
+                return NotFound();
+            }
+
+            return cameraBoxes;
+        }
+
         // PUT: api/CameraBox/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

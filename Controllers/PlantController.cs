@@ -49,6 +49,24 @@ namespace Project40_API_Dot_NET.Controllers
             return plant;
         }
 
+        // GET: api/Plant/User/5
+        [HttpGet("User/{userId}")]
+        public async Task<ActionResult<IEnumerable<Plant>>> GetPlantFromUser(int userId)
+        {
+            var plants = await _context.Plants
+                .Include(p => p.User)
+                .Include(p => p.Result)
+                .Where(p => p.UserId == userId)
+                .ToListAsync();
+
+            if (plants == null)
+            {
+                return NotFound();
+            }
+
+            return plants;
+        }
+
         // PUT: api/Plant/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
