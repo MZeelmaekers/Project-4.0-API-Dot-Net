@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +17,8 @@ namespace Project40_API_Dot_NET.Models
         public string? Address { get; set; }
         public string? ZipCode { get; set; }
         public string? Hometown { get; set; }
+        [NotMapped]
+        public string Token { get; set; }
 
         public ICollection<CameraBox> CameraBoxes { get; set; }
         public ICollection<Plant> Plants { get; set; }

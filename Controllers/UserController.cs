@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project40_API_Dot_NET.Data;
 using Project40_API_Dot_NET.Models;
+using Project40_API_Dot_NET.Services;
 
 namespace Project40_API_Dot_NET.Controllers
 {
@@ -16,9 +17,21 @@ namespace Project40_API_Dot_NET.Controllers
     {
         private readonly PlantContext _context;
 
-        public UserController(PlantContext context)
+        private IUserService _userService;
+
+        public UserController(PlantContext context, IUserService userService)
         {
             _context = context;
+            _userService = userService;
+        }
+
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody] User userParam)
+        {
+            var user = _userService.Authenticate(userParam.Email, userParam.Password);
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+            return Ok(user);
         }
 
         // GET: api/User
