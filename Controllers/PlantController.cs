@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project40_API_Dot_NET.Data;
 using Project40_API_Dot_NET.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Project40_API_Dot_NET.Controllers
 {
@@ -50,13 +52,14 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/Plant/User/5
-        [HttpGet("User/{userId}")]
-        public async Task<ActionResult<IEnumerable<Plant>>> GetPlantFromUser(int userId)
+        [Authorize]
+        [HttpGet("User/{id}")]
+        public async Task<ActionResult<IEnumerable<Plant>>> GetPlantFromUser(int id)
         {
             var plants = await _context.Plants
                 .Include(p => p.User)
                 .Include(p => p.Result)
-                .Where(p => p.UserId == userId)
+                .Where(p => p.UserId == id)
                 .ToListAsync();
 
             if (plants == null)

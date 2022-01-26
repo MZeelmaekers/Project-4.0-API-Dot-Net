@@ -10,13 +10,14 @@ namespace Project40_API_Dot_NET.Data
 {
     public class PlantContext: DbContext
     {
-        public PlantContext(DbContextOptions<PlantContext> options): base(options) { }
-
         public DbSet<User> Users { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<CameraBox> CameraBoxes { get; set; }
         public DbSet<Plant> Plants { get; set; }
 
+        public PlantContext(DbContextOptions<PlantContext> options): base(options) { }
+
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
