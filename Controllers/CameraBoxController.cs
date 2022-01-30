@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/CameraBox
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CameraBox>>> GetCameraBoxes()
         {
@@ -31,6 +33,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/CameraBox/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<CameraBox>> GetCameraBox(int id)
         {
@@ -48,6 +51,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/CameraBox/User/5
+        [Authorize]
         [HttpGet("User/{userId}")]
         public async Task<ActionResult<IEnumerable<CameraBox>>> GetCameraBoxFromUser(int userId)
         {
@@ -66,6 +70,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // PUT: api/CameraBox/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCameraBox(int id, CameraBox cameraBox)
         {
@@ -97,6 +102,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // POST: api/CameraBox
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CameraBox>> PostCameraBox(CameraBox cameraBox)
         {
@@ -107,6 +113,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // DELETE: api/CameraBox/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCameraBox(int id)
         {

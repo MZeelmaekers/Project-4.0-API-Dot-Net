@@ -24,6 +24,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/Plant
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Plant>>> GetPlants()
         {
@@ -34,6 +35,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/Plant/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Plant>> GetPlant(int id)
         {
@@ -60,6 +62,7 @@ namespace Project40_API_Dot_NET.Controllers
                 .Include(p => p.User)
                 .Include(p => p.Result)
                 .Where(p => p.UserId == id)
+                .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync();
 
             if (plants == null)
@@ -72,6 +75,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // PUT: api/Plant/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlant(int id, Plant plant)
         {
@@ -103,6 +107,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // POST: api/Plant
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Plant>> PostPlant(Plant plant)
         {
@@ -113,6 +118,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // DELETE: api/Plant/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlant(int id)
         {

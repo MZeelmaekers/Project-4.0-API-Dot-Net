@@ -24,10 +24,14 @@ namespace Project40_API_Dot_NET.Services
         }
         public User Authenticate(string email, string password)
         {
-            var user = _plantContext.Users.SingleOrDefault(x => x.Email == email && x.Password == password);
+            var user = _plantContext.Users.SingleOrDefault(x => x.Email == email);
             // return null if user not found
             if (user == null)
                 return null;
+            // Check if the hashes of the passwords match
+            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+                return null;
+
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -37,7 +41,8 @@ namespace Project40_API_Dot_NET.Services
             {
                 new Claim("UserID", user.Id.ToString()),
                 new Claim("Email", user.Email),
-                new Claim("Name", user.Name)
+                new Claim("Name", user.Name),
+                new Claim(ClaimTypes.Role, user.Role.ToString())
             }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
