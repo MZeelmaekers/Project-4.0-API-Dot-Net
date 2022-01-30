@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/Result
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Result>>> GetResults()
         {
@@ -49,6 +51,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // PUT: api/Result/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutResult(int id, Result result)
         {
@@ -80,6 +83,7 @@ namespace Project40_API_Dot_NET.Controllers
 
         // POST: api/Result
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Result>> PostResult(Result result)
         {
@@ -90,6 +94,7 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // DELETE: api/Result/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteResult(int id)
         {
