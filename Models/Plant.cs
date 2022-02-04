@@ -8,8 +8,10 @@ namespace Project40_API_Dot_NET.Models
     public class Plant: BaseEntity
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string FotoPath { get; set; }
         public string? Location { get; set; }
+        public string? FieldName { get; set; }
 
 
         public int? UserId { get; set; }

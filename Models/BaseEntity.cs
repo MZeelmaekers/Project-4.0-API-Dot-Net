@@ -11,7 +11,7 @@ namespace Project40_API_Dot_NET.Models
 
         public BaseEntity()
         {
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow.AddHours(1);
         }
 }
 }
