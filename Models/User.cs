@@ -17,10 +17,13 @@ namespace Project40_API_Dot_NET.Models
         public string? Address { get; set; }
         public string? ZipCode { get; set; }
         public string? Hometown { get; set; }
+        public int? SuperVisorId { get; set; }
         [NotMapped]
         public string Token { get; set; }
 
+        public User SuperVisor { get; set; }
         public ICollection<CameraBox> CameraBoxes { get; set; }
         public ICollection<Plant> Plants { get; set; }
+        public ICollection<User> Workers { get; set; }
     }
 }

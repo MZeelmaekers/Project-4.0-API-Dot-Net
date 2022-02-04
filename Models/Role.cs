@@ -9,6 +9,6 @@ namespace Project40_API_Dot_NET.Models
     {
         User,
         Admin,
-        Werkgever
+        SuperVisor
     }
 }

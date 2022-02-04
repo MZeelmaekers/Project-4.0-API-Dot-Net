@@ -22,9 +22,9 @@ namespace Project40_API_Dot_NET.Models
             User user = new User()
             {
                 Name = "Niels",
-                IsAdmin = true,
+                Role = Role.Admin,
                 Email = "niels@msn.com",
-                Password = "Niels123"
+                Password = "Niels123*"
             };
             context.Add(user);
 
