@@ -51,7 +51,7 @@ namespace Project40_API_Dot_NET.Data
 
             foreach (var entityEntry in entries)
             {
-                entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now;
+                entityEntry.Property("CreatedAt").CurrentValue = DateTime.UtcNow.AddHours(1);
             }
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
