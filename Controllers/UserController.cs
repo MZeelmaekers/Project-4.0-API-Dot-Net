@@ -42,7 +42,7 @@ namespace Project40_API_Dot_NET.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetSupervisors()
         {
             List<User> users = await _context.Users
-                .Where(u => u.Role == Role.SuperVisor)
+                .Where(u => u.Role == Role.SuperVisor || u.Role == Role.Admin)
                 .Include(u => u.CameraBoxes)
                 .Include(u => u.Plants)
                 .ToListAsync();
