@@ -37,7 +37,6 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/User/Supervisors
-        [Authorize]
         [HttpGet("SuperVisors")]
         public async Task<ActionResult<IEnumerable<User>>> GetSuperVisors()
         {
@@ -54,7 +53,6 @@ namespace Project40_API_Dot_NET.Controllers
         }
 
         // GET: api/User
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
