@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using Project40_API_Dot_NET.Data;
 using Project40_API_Dot_NET.Models;
 using Project40_API_Dot_NET.Services;
@@ -108,12 +109,16 @@ namespace Project40_API_Dot_NET.Controllers
         // PUT: api/User/password/{id}
         [Authorize]
         [HttpPut("password/{id}")]
-        public async Task<IActionResult> UserChangePassword(int id, string password, string newPassword)
+        public async Task<IActionResult> UserChangePassword(int id,[FromBody] JObject fromBody)
         {
             if (!UserExists(id))
             {
                 return NotFound();
             }
+
+            var jobject = JObject.Parse(fromBody.ToString());
+            string password = (string)jobject.SelectToken("password");
+            string newPassword = (string)jobject.SelectToken("newPassword");
             User user = await _context.Users.FindAsync(id);
             if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
@@ -139,8 +144,6 @@ namespace Project40_API_Dot_NET.Controllers
                     throw;
                 }
             }
-
-            user.Password = null;
 
             return NoContent();
         }
