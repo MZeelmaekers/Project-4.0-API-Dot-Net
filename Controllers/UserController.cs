@@ -38,8 +38,8 @@ namespace Project40_API_Dot_NET.Controllers
 
         // GET: api/User/Supervisors
         [Authorize]
-        [HttpGet("Supervisors")]
-        public async Task<ActionResult<IEnumerable<User>>> GetSupervisors()
+        [HttpGet("SuperVisors")]
+        public async Task<ActionResult<IEnumerable<User>>> GetSuperVisors()
         {
             List<User> users = await _context.Users
                 .Where(u => u.Role == Role.SuperVisor || u.Role == Role.Admin)
