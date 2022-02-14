@@ -36,6 +36,23 @@ namespace Project40_API_Dot_NET.Controllers
             return Ok(user);
         }
 
+        // GET: api/User/Supervisors
+        [Authorize]
+        [HttpGet("Supervisors")]
+        public async Task<ActionResult<IEnumerable<User>>> GetSupervisors()
+        {
+            List<User> users = await _context.Users
+                .Where(u => u.Role == Role.SuperVisor)
+                .Include(u => u.CameraBoxes)
+                .Include(u => u.Plants)
+                .ToListAsync();
+
+            // Prevent from sending the password
+            users.ForEach(u => u.Password = null);
+
+            return users;
+        }
+
         // GET: api/User
         [Authorize]
         [HttpGet]
